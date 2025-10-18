@@ -42,13 +42,20 @@ export const Td = styled.td`
 `;
 
 const Grid = ({ users, setUsers, setOnEdit }) => {
+    // Função para formatar a data
+    const formatDate = (dateStr) => {
+        if (!dateStr) return "";
+        const [year, month, day] = dateStr.split("-");
+        return `${day}/${month}/${year}`;
+    };
+
     const handleEdit = (item) => {
         setOnEdit(item);
     };
 
     const handleDelete = async (id) => {
         await axios
-            .delete("http://localhost:8800/" + id)
+            .delete("http://localhost:8800/users/" + id)
             .then(({ data }) => {
                 const newArray = users.filter((user) => user.id !== id);
 
@@ -77,6 +84,7 @@ const Grid = ({ users, setUsers, setOnEdit }) => {
                         <Td $width="30%">{item.nome}</Td>
                         <Td $width="30%">{item.email}</Td>
                         <Td $width="20%" $onlyWeb>{item.fone}</Td>
+                        <Td $width="15%" $onlyWeb>{formatDate(item.data_nascimento)}</Td>
                         <Td $alignCenter $width="5%">
                             <FaEdit onClick={() => handleEdit(item)} />
                         </Td>
