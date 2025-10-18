@@ -44,8 +44,8 @@ npm start
 
 ## 🌐 Deploy
 
-- **Frontend:** [em breve]  
-- **Backend:** [em breve]
+- **Frontend:** https://cru-dreactnode.vercel.app/users
+- **Backend:** https://crudreactnode-1.onrender.com/users
 
 ---
 
