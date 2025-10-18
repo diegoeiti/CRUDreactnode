@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { FaTrash, FaEdit } from "react-icons/fa";
 import { toast } from "react-toastify";
 
+const BASE_URL = "https://crudreactnode-1.onrender.com/users";
+
 const Table = styled.table`
     width: 100%;
     background-color: #fff;
@@ -55,7 +57,7 @@ const Grid = ({ users, setUsers, setOnEdit }) => {
 
     const handleDelete = async (id) => {
         await axios
-            .delete("http://localhost:8800/users/" + id)
+            .delete(`${BASE_URL}/${id}`)
             .then(({ data }) => {
                 const newArray = users.filter((user) => user.id !== id);
 
